@@ -1,5 +1,6 @@
 require "dxruby"
 require_relative "player"
+# require_relative "soko"
 require_relative "map"
 
 Window.width = 600
@@ -14,4 +15,5 @@ Window.loop do
 
     player.draw
     player.move
+    map.draw
 end
