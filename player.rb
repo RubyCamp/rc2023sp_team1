@@ -22,7 +22,7 @@ class Player < Sprite
         
         self.y -= @dy
         @dy = 0
-        @dy = @speed if Input.key_down?(K_SPACE)
+        @dy = 10 if Input.key_down?(K_SPACE)
 
         if @dx > 0
             self.image = @right_image
