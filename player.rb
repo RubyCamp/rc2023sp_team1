@@ -1,8 +1,9 @@
+require_relative "map.rb"
 class Player < Sprite
     def initialize
         self.image = Image.new(30,60,C_BLUE)
         self.x = 200
-        self.y = 300 - self.image.height
+        self.y = 50 - self.image.height
     end
 
     def fall
