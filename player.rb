@@ -4,7 +4,7 @@ class Player < Sprite
         @left_image = Image.load("images/hito_left.png")
         self.image = @right_image
         self.x = 200
-        self.y = 300 - self.image.height
+        self.y = 200 - self.image.height
         @dx = 0
         @speed = 4
     end
