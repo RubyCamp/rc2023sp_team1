@@ -10,10 +10,6 @@ class Player < Sprite
         @speed = 4
     end
 
-    def fall
-        self.y += 2
-    end
-
     def move
         self.x += @dx
         @dx = 0
