@@ -1,4 +1,3 @@
-require_relative "map.rb"
 class Player < Sprite
     def initialize
         @right_image = Image.load("images/hito_right.png")

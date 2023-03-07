@@ -11,8 +11,6 @@ player = Player.new
 map = Map.new
 
 Window.loop do
-    map.draw
-
     player.draw
     player.move
     map.draw
