@@ -6,6 +6,7 @@ class Player < Sprite
         self.x = 200
         self.y = 200 - self.image.height
         @dx = 0
+        @dy = 0
         @speed = 4
     end
 
@@ -18,6 +19,10 @@ class Player < Sprite
         @dx = 0
         @dx = @speed if Input.key_down?(K_D)
         @dx = -@speed if Input.key_down?(K_A)
+        
+        self.y -= @dy
+        @dy = 0
+        @dy = @speed if Input.key_down?(K_SPACE)
 
         if @dx > 0
             self.image = @right_image
