@@ -11,7 +11,7 @@ class Gravity
     def fall
         line = @map.map_data[@map_y]
         if line[@map_x] == 0
-            @object.fall
+            @object.y += 2
         end
     end   
 end
