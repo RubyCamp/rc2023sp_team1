@@ -24,7 +24,6 @@ Window.loop do
     player.draw
     player.move
     map.draw
-    gravity.fall
     door.draw
     block.draw
     player_gravity.fall
@@ -34,5 +33,4 @@ Window.loop do
         player.push
         block.move
     end
-
 end
