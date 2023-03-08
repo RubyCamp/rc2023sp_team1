@@ -2,6 +2,7 @@ require "dxruby"
 require_relative "player"
 require_relative "map"
 require_relative "gravity"
+require_relative "door"
 require_relative "block"
 
 Window.width = 600
@@ -10,6 +11,7 @@ Window.bgcolor = C_WHITE
 
 player = Player.new
 map = Map.new
+door = Door.new(0,0,200,100,player)
 block = Block.new
 
 Window.loop do
@@ -22,6 +24,7 @@ Window.loop do
     player.draw
     player.move
     map.draw
+    door.draw
     block.draw
     player_gravity.fall
     block_gravity.fall
