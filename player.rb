@@ -3,15 +3,12 @@ class Player < Sprite
         @right_image = Image.load("images/hito_right.png")
         @left_image = Image.load("images/hito_left.png")
         self.image = @right_image
-        self.x = 200
+        self.x = 0
         self.y = 200 - self.image.height
+        self.collision = [0, 0, self.image.height - 1, self.image.width - 1]
         @dx = 0
         @dy = 0
         @speed = 4
-    end
-
-    def fall
-        self.y += 2
     end
 
     def move
@@ -29,5 +26,9 @@ class Player < Sprite
         elsif @dx < 0
             self.image = @left_image
         end
+    end
+
+    def push
+        
     end
 end
