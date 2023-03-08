@@ -2,7 +2,6 @@
 
 require 'dxruby'
 
-
 # 画像ファイル読込
 start_image = Image.load("start_image.png")
 
