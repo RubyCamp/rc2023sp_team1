@@ -26,6 +26,7 @@ Window.loop do
         Window.draw(0,0,start_image)
         state = 1 if Input.key_push?(K_SPACE)
 
+        
     when 1
         map_x = (player.x / 20).abs
         map_y = ((player.y + 50) / 20).abs
