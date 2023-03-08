@@ -10,10 +10,11 @@ Window.height = 400
 Window.bgcolor = C_WHITE
 
 player = Player.new
-map = Map.new
+map = Map.new(1)
 door = Door.new(0,0,200,100,player)
 state = 0
 font = Font.new(32)
+block = []
 
 Window.loop do
     case state
@@ -35,11 +36,13 @@ Window.loop do
         door.draw
         player_gravity.fall
         # block_gravity.fall
-        # arr = [player,block]
-        # if Sprite.check(arr) then
+        arr = [player,block]
+=begin 
+        if Sprite.check(arr) then
             player.push
-            # block.move
-        # end
+            block.move
+        end
+=end
         state = 2 if player.x == 580
     
     when 2
