@@ -1,4 +1,3 @@
-
 ## クリア画面
 
 require 'dxruby'
