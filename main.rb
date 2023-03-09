@@ -14,7 +14,8 @@ player = Player.new
 map = Map.new(1)
 door = Door.new(0,0,200,100,player)
 state = 0
-font = Font.new(32)
+font = Font.new(15)
+time = 600
 
 block = []
 map.create_move_block
@@ -24,6 +25,8 @@ timeout_seconds = 5
 
 Window.loop do
     case state
+
+
     when 0
         start_image = Image.load("start_image_new.png")
         Window.draw(0,0,start_image)
@@ -42,6 +45,15 @@ Window.loop do
         door.draw
         player_gravity.fall
 
+        if time > -1
+            Window.draw_font(520, 10, "残り#{time/60}秒", font,color:C_BLACK)
+            time -= 1
+            state = 1
+        else
+            Window.draw_font(520, 10, "時間切れ", font,color:C_BLACK)
+            state = 3
+        end
+
         for i in 0..3
             arr = [player,map.move_blocks[i]]
             if Sprite.check(arr) then
@@ -50,7 +62,9 @@ Window.loop do
                 map.move_blocks[i].move
             end
         end
-        state = 2 if player.x == 500
+        
+        state = 2 if player.x >= 500
+
     
     when 2
         Window.draw_font(230,200,"GAME CLEAR",font, color:C_BLACK)
@@ -59,11 +73,14 @@ Window.loop do
             player.x = 25
         end
 
+        
+
     when 3
-        Window.draw_font(230,200,"GAME CLEAR",font,color:C_WHITE)
+        Window.draw_font(230,200,"GAME OVER",font,color:C_BLACK)
         if Input.key_push?(K_SPACE)
             state = 1
             player.x = 25
         end
+
     end
 end
