@@ -5,7 +5,7 @@ require_relative "player"
 require_relative "gravity"
 
 class Map
-    attr_accessor :map
+    attr_accessor :map, :block
     def initialize(map)
         @dat_path = "maps/stage#{map}.map"
         get_data

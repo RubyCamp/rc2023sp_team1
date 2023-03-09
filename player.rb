@@ -19,7 +19,7 @@ class Player < Sprite
         @jump_count = 3
         @map_x = (self.x / 20).abs
         @map_y = ((self.y + 50) / 20).abs
-        @map = Map.new
+        @map = Map.new(1)
         @flag = 0
     end
 
