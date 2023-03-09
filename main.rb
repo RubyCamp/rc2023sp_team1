@@ -56,7 +56,7 @@ Window.loop do
                 map.move_blocks[i].move
             end
         end
-        state = 2 if player.x == 500
+        state = 2 if player.x >= 540
     
     when 2
         Window.draw_font(200,200,"GAME CLEAR",font, color:C_WHITE)
