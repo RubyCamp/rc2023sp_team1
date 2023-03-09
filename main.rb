@@ -1,4 +1,5 @@
 require "dxruby"
+require_relative "start"
 require_relative "player"
 require_relative "map"
 require_relative "gravity"
@@ -11,15 +12,17 @@ Window.width = 600
 Window.height = 400
 Window.bgcolor = [32,178,170]
 
+start = Start.new
 player = Player.new
-map = Map.new(1)
+stage = 1
+map = Map.new(stage)
 door = Door.new(0,0,200,100,player)
 state = 0
 font = Font.new(32)
 design = Design.new
 
 block = []
-map.create_move_block
+map.create_move_block(player)
 
 timeout_seconds = 5
 
@@ -27,8 +30,7 @@ timeout_seconds = 5
 Window.loop do
     case state
     when 0
-        start_image = Image.load("start_image_new.png")
-        Window.draw(0,0,start_image)
+        start.draw
         state = 1 if Input.key_push?(K_SPACE)
     
     when 1
@@ -44,7 +46,6 @@ Window.loop do
         player.move
         player.jump
         map.draw
-        door.draw
         player_gravity.fall
 
         for i in 0..3
@@ -58,17 +59,12 @@ Window.loop do
         state = 2 if player.x == 500
     
     when 2
-        Window.draw_font(230,200,"GAME CLEAR",font, color:C_BLACK)
+        Window.draw_font(200,200,"GAME CLEAR",font, color:C_WHITE)
         if Input.key_push?(K_SPACE)
             state = 1 
             player.x = 25
-        end
-
-    when 3
-        Window.draw_font(230,200,"GAME CLEAR",font,color:C_WHITE)
-        if Input.key_push?(K_SPACE)
-            state = 1
-            player.x = 25
+            player.y = 150
+            stage += 1
         end
     end
 end

@@ -1,15 +1,14 @@
-## スタート画面
-
-require 'dxruby'
-
-def start_action
-    # 画像ファイル読込
-    start_image = Image.load("start_image.png")
-
-    Window.loop do
-        Window.draw(0, 0, start_image)
-        
-        # スペースキーを押してゲーム画面へ
-        break if Input.key_push?(K_SPACE)
+class Start
+    def initialize
+        @charactor = Image.load("images/hito_right.png")
+        @cloud = Image.load("images/cloud.png")
+        @font = Font.new(32,"Bhanschrift")
+        @font2 = Font.new(24,"Bhanschrift")
+    end
+    
+    def draw
+        Window.draw(275,175,@charactor)
+        Window.draw_font(230,230,"Block Boy",@font)
+        Window.draw_font(200,270,"Press space to start",@font2)
     end
 end

@@ -10,7 +10,7 @@ class Map
         @dat_path = "maps/stage#{map}.map"
         get_data
         @move_blocks = []
-        @block = Image.new(20, 20, C_BLACK)
+        @block = Image.new(20, 20, [139,69,19])
     end
 
     def get_data
@@ -37,20 +37,20 @@ class Map
         move_block
     end
 
-    def create_move_block
+    def create_move_block(player)
         
         for i in 0..19
             for j in 0..29
                 a = @map[i][j]
                 case a
                 when 6
-                    @move_blocks << Block.new(j * 20, i * 20, 0)
+                    @move_blocks << Block.new(j * 20, i * 20, 0, player)
                 when 7
-                    @move_blocks << Block.new(j * 20, i * 20, 1)
+                    @move_blocks << Block.new(j * 20, i * 20, 1, player)
                 when 8
-                    @move_blocks << Block.new(j * 20, i * 20, 2)
+                    @move_blocks << Block.new(j * 20, i * 20, 2, player)
                 when 9
-                    @move_blocks << Block.new(j * 20, i * 20, 3)
+                    @move_blocks << Block.new(j * 20, i * 20, 3, player)
                 end
             end
         end

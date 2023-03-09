@@ -1,7 +1,7 @@
 class Block < Sprite
     attr_accessor :dy,:v
-    def initialize(x,y,num)
-
+    def initialize(x,y,num,player)
+        @player = player
         @block_width = 80
         @block_height = 80
         self.image = Image.load_tiles("images/puzzle1.png", 2, 2)[num]
@@ -10,11 +10,17 @@ class Block < Sprite
         self.y = y
         @dy = 0
         @v = 0
+        @block_speed = 4
     end
 
     def move
-        # ifで右から来たのと左から来たので分ける
-        self.x += 30
+        if @player.x + @player.image.width < self.x + 80
+            self.x += @block_speed
+            @player.x = self.x - @player.image.width - 1
+        elsif @player.x + @player.image.width > self.x
+            self.x -= @block_speed
+            @player.x = self.x + 80 + 1
+        end
     end
 
 end
