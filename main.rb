@@ -34,7 +34,6 @@ Window.loop do
         state = 1 if Input.key_push?(K_SPACE)
     
     when 1
-        map = Map.new(stage)
         design.cloud(100,50)
         design.cloud(300,30)
         design.cloud(500,50)
