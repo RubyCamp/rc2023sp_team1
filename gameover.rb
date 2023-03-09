@@ -8,3 +8,4 @@ def gameover_action
         break if Input.key_push?(K_SPACE)
     end
 end
+
