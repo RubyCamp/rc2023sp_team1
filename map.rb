@@ -5,10 +5,11 @@ require_relative "player"
 require_relative "gravity"
 
 class Map
-    attr_accessor :map, :block
+    attr_accessor :map, :block, :move_blocks
     def initialize(map)
         @dat_path = "maps/stage#{map}.map"
         get_data
+        @move_blocks = []
         @block = Image.new(20, 20, C_BLACK)
         @player = Player.new
     end
@@ -38,7 +39,7 @@ class Map
     end
 
     def create_move_block
-        @move_blocks = []
+        
         for i in 0..19
             for j in 0..29
                 a = @map[i][j]

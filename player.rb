@@ -46,6 +46,7 @@ class Player < Sprite
 
 
     def push 
+        # self.y += 20
     end
 
     def jump
