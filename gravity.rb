@@ -8,7 +8,6 @@ class Gravity
         @map_y = map_y
         @map = Map.new(1)
         @object = object
-        @player = Player.new
     end
 
     def fall
@@ -19,14 +18,19 @@ class Gravity
     end
 
     def ground_collision
-        @player.speed
         line = @map.map_data[@map_y-1]
-        if line[@map_x+1] != 0
-            @player.stop
+        if line[@map_x+3] != 0
+            @object.speed(0)
+            if Input.key_down?(K_A)
+                @object.speed(4)
+            end
         end
 
         if line[@map_x-1] != 0
-            @player.stop
+            @object.speed(0)
+            if Input.key_down?(K_D)
+                @object.speed(4)
+            end
         end
     end
 end

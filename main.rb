@@ -10,7 +10,6 @@ Window.height = 400
 Window.bgcolor = C_WHITE
 
 player = Player.new
-player.speed
 map = Map.new(1)
 door = Door.new(0,0,200,100,player)
 state = 0
@@ -29,12 +28,13 @@ Window.loop do
         map_x = (player.x / 20).abs
         map_y = ((player.y + 50) / 20).abs
         player_gravity = Gravity.new(map_x,map_y,player)
+        player.speed(4)
+        player_gravity.ground_collision
         player.draw
         player.move
         map.draw
         door.draw
         player_gravity.fall
-        player_gravity.ground_collision
         arr = [player,block]
         if Sprite.check(arr) then
             player.push

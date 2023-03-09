@@ -8,17 +8,18 @@ class Player < Sprite
         self.collision = [0, 0, self.image.height - 1, self.image.width - 1]
         @dx = 0
         @dy = 0
-        p "aaa"
     end
 
-    def speed
-        @speed = 4
+    def speed(i)
+        @speed = i
     end
 
     def move
         self.x += @dx
         @dx = 0
-        @dx = @speed if Input.key_down?(K_D)
+        if Input.key_down?(K_D)
+            @dx = @speed 
+        end
         @dx = -@speed if Input.key_down?(K_A)
         
         self.y -= @dy
@@ -30,11 +31,6 @@ class Player < Sprite
         elsif @dx < 0
             self.image = @left_image
         end
-    end
-
-    def stop
-        p @speed
-        @speed = 0
     end
 
     def push
