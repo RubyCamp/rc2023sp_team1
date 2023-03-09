@@ -16,9 +16,9 @@ class Player < Sprite
         @speed = 4
         @space_count = 0
         @jump_count = 3
-        # @map_x = (self.x / 20).abs
-        # @map_y = ((self.y + 50) / 20).abs
-        # @map = Map.new
+        @map_x = (self.x / 20).abs
+        @map_y = ((self.y + 50) / 20).abs
+        @map = Map.new
     end
 
     def move
@@ -41,7 +41,8 @@ class Player < Sprite
     end
 
     def jump
-        # line = @map.map_data[@map_y]
+        line = @map.map_data[@map_y]
+        line2 = @map.map_data[@map_y+1]
         if @space_count < 3
             if Input.key_push?(K_SPACE)
                 @v = -10
@@ -51,20 +52,28 @@ class Player < Sprite
         @bottom += @v
         # ここの条件をかえる
         # もしも下のブロックが1の時spaceを0にしたい
-        if (@bottom >= 191)
-            @bottom = 190
+        # if (@bottom >= 191)
+        #     @bottom = 190
+        #     @v = 0
+        #     @space_count = 0
+        # end
+        # if (@bottom >= @map_y*20)
+        #     @bottom = @map_y*20
+        #     @v = 0
+        #     @space_count = 0
+            
+        # end
+        p @space_count
+        if line2[@map_x] == 1
+            @bottom = @map_y
             @v = 0
             @space_count = 0
         end
         # if line[@map_x] == 1
-        #     # @bottom = 
-        #     @v = 0
         #     @space_count = 0
         # end
-        # if line[@map_x] == 1
-        #     @space_count = 0
-        # end
-        self.y = @bottom - 32
+        # self.y = @bottom - 32
+        self.y = @bottom - self.image.height
         @v += 1 # 重力加速度
         
     end

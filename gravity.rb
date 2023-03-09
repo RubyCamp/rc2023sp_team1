@@ -12,7 +12,6 @@ class Gravity
         line = @map.map_data[@map_y]
         if line[@map_x] == 0
             @object.y += 2
-            # @object.v = 0
         # elsif line[@map_x] == 1
         #     @object.v = -10
         end
