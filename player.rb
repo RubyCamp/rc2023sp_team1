@@ -29,9 +29,6 @@ class Player < Sprite
         @dx = @speed if Input.key_down?(K_D)
         @dx = -@speed if Input.key_down?(K_A)
         
-        # self.y -= @dy
-        # @dy = 0
-        
         if @dx > 0
             self.image = @right_image
         elsif @dx < 0
@@ -58,8 +55,6 @@ class Player < Sprite
         end
 
         @bottom += @v
-        # p @space_count
-        # p line[@map_x]
         if @flag == 0
             if line[@map_x] == 1
                 @bottom = @map_y*20
@@ -73,9 +68,6 @@ class Player < Sprite
         if @v > 0 && @flag == 1
             @flag = 0
         end
-        # p @map_x
-        # p @map_y
-        
     end
 end
 # ここの条件をかえる

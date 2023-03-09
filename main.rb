@@ -26,26 +26,26 @@ Window.loop do
         Window.draw(0,0,start_image)
         state = 1 if Input.key_push?(K_SPACE)
 
-        
     when 1
         map_x = (player.x / 20).abs
         map_y = ((player.y + 50) / 20).abs
-        #block_x = (block.x / 20).abs
-        #block_y = ((block.y + 80) / 20).abs
+        block_x = (block.x / 20).abs
+        block_y = ((block.y + 80) / 20).abs
         player_gravity = Gravity.new(map_x,map_y,player)
-        #block_gravity = Gravity.new(block_x,block_y,block)
+        block_gravity = Gravity.new(block_x,block_y,block)
         player.draw
         player.move
+        player.jump
         map.draw
         door.draw
         block.draw
         player_gravity.fall
-        #block_gravity.fall
-        #arr = [player,block]
-        #if Sprite.check(arr) then
+        block_gravity.fall
+        arr = [player,block]
+        if Sprite.check(arr) then
             player.push
-            #block.move
-        #end
+            block.move
+        end
         
         state = 2 if player.x >= 580
         puts player.x
