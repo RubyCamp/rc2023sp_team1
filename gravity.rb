@@ -14,6 +14,7 @@ class Gravity
         line = @map.map_data[@map_y]
         if line[@map_x] == 0
             @object.y += 4
+
         end
     end
 end
