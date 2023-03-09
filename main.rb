@@ -22,7 +22,7 @@ font = Font.new(32)
 design = Design.new
 
 block = []
-map.create_move_block
+map.create_move_block(player)
 
 timeout_seconds = 5
 
