@@ -15,5 +15,5 @@ class Gravity
         if line[@map_x] == 0
             @object.y += 4
         end
-    end   
+    end
 end

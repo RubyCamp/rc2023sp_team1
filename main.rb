@@ -15,6 +15,7 @@ door = Door.new(0,0,200,100,player)
 state = 0
 font = Font.new(32)
 block = []
+map.create_move_block
 
 Window.loop do
     case state
@@ -26,23 +27,17 @@ Window.loop do
     when 1
         map_x = (player.x / 20).abs
         map_y = ((player.y + 50) / 20).abs
-        # block_x = (map.move_block.x / 20).abs
-        # block_y = ((map.move_block.y + 80) / 20).abs
         player_gravity = Gravity.new(map_x,map_y,player)
-        # block_gravity = Gravity.new(block_x,block_y,map.move_block)
         player.draw
         player.move
         map.draw
         door.draw
         player_gravity.fall
-        # block_gravity.fall
         arr = [player,block]
-=begin 
         if Sprite.check(arr) then
             player.push
             block.move
         end
-=end
         state = 2 if player.x == 580
     
     when 2

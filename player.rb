@@ -29,6 +29,8 @@ class Player < Sprite
     end
 
     def push
-        
+        if Input.key_push(K_D)
+            self.x += 20
+        end
     end
 end

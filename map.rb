@@ -30,26 +30,37 @@ class Map
         for i in 0..19
             for j in 0..29
                 Window.draw(j * 20, i * 20, @block) if @map[i][j] == 1
+            end
+        end
+        move_block
+    end
+
+    def create_move_block
+        @move_blocks = []
+        for i in 0..19
+            for j in 0..29
                 a = @map[i][j]
                 case a
                 when 6
-                    @move_block = Block.new(j * 20, i * 20, 0)
-                    @move_block.draw
+                    @move_blocks << Block.new(j * 20, i * 20, 0)
                 when 7
-                    @move_block = Block.new(j * 20, i * 20, 1)
-                    @move_block.draw
+                    @move_blocks << Block.new(j * 20, i * 20, 1)
                 when 8
-                    @move_block = Block.new(j * 20, i * 20, 2)
-                    @move_block.draw
+                    @move_blocks << Block.new(j * 20, i * 20, 2)
                 when 9
-                    @move_block = Block.new(j * 20, i * 20, 3)
-                    @move_block.draw
+                    @move_blocks << Block.new(j * 20, i * 20, 3)
                 end
             end
         end
     end
 
     def move_block
-        @move_block
+        for i in 0..3
+            block_x = (@move_blocks[i].x / 20)
+            block_y = ((@move_blocks[i].y + 80) / 20)
+            block_gravity = Gravity.new(block_x,block_y,@move_blocks[i])
+            block_gravity.fall
+            @move_blocks[i].draw
+        end
     end
 end
