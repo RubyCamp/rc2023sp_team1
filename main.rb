@@ -42,10 +42,13 @@ Window.loop do
         door.draw
         player_gravity.fall
 
-        arr = [player,block]
-        if Sprite.check(arr) then
-            player.push
-            block.move
+        for i in 0..3
+            arr = [player,map.move_blocks[i]]
+            if Sprite.check(arr) then
+                # p "hhh"
+                player.push
+                map.move_blocks[i].move
+            end
         end
         state = 2 if player.x == 500
     
