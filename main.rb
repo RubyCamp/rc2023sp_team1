@@ -25,7 +25,7 @@ timeout_seconds = 5
 Window.loop do
     case state
     when 0
-        start_image = Image.load("start_image.png")
+        start_image = Image.load("start_image_new.png")
         Window.draw(0,0,start_image)
         state = 1 if Input.key_push?(K_SPACE)
     
