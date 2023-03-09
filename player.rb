@@ -14,7 +14,6 @@ class Player < Sprite
         @dx = 0
         @dy = 0
         @v = 0
-        @speed = 4
         @space_count = 1
         @jump_count = 3
         @map_x = (self.x / 20).abs
@@ -23,10 +22,16 @@ class Player < Sprite
         @flag = 0
     end
 
+    def speed(i)
+        @speed = i
+    end
+
     def move
         self.x += @dx
         @dx = 0
-        @dx = @speed if Input.key_down?(K_D)
+        if Input.key_down?(K_D)
+            @dx = @speed 
+        end
         @dx = -@speed if Input.key_down?(K_A)
         
         if @dx > 0

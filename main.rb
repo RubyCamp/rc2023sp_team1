@@ -25,7 +25,7 @@ timeout_seconds = 5
 Window.loop do
     case state
     when 0
-        start_image = Image.load("start_image.png")
+        start_image = Image.load("start_image_new.png")
         Window.draw(0,0,start_image)
         state = 1 if Input.key_push?(K_SPACE)
     
@@ -33,6 +33,8 @@ Window.loop do
         map_x = (player.x / 20).abs
         map_y = ((player.y + 50) / 20).abs
         player_gravity = Gravity.new(map_x,map_y,player)
+        player.speed(4)
+        player_gravity.ground_collision
         player.draw
         player.move
         player.jump

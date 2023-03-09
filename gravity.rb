@@ -16,4 +16,21 @@ class Gravity
             @object.y += 4
         end
     end
+
+    def ground_collision
+        line = @map.map_data[@map_y-1]
+        if line[@map_x+3] != 0
+            @object.speed(0)
+            if Input.key_down?(K_A)
+                @object.speed(4)
+            end
+        end
+
+        if line[@map_x-1] != 0
+            @object.speed(0)
+            if Input.key_down?(K_D)
+                @object.speed(4)
+            end
+        end
+    end
 end
