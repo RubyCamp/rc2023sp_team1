@@ -14,7 +14,8 @@ Window.bgcolor = [32,178,170]
 
 start = Start.new
 player = Player.new
-map = Map.new(1)
+stage = 1
+map = Map.new(stage)
 door = Door.new(0,0,200,100,player)
 state = 0
 font = Font.new(32)
@@ -33,6 +34,7 @@ Window.loop do
         state = 1 if Input.key_push?(K_SPACE)
     
     when 1
+        map = Map.new(stage)
         design.cloud(100,50)
         design.cloud(300,30)
         design.cloud(500,50)
@@ -63,6 +65,7 @@ Window.loop do
             state = 1 
             player.x = 25
             player.y = 150
+            stage += 1
         end
     end
 end
