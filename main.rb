@@ -47,7 +47,7 @@ Window.loop do
             player.push
             block.move
         end
-        state = 2 if player.x == 580
+        state = 2 if player.x == 500
     
     when 2
         Window.draw_font(230,200,"GAME CLEAR",font, color:C_BLACK)
