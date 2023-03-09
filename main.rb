@@ -1,24 +1,30 @@
 require "dxruby"
+require_relative "start"
 require_relative "player"
 require_relative "map"
 require_relative "gravity"
 require_relative "door"
 require_relative "block"
+require_relative "design"
 
 
 Window.width = 600
 Window.height = 400
-Window.bgcolor = C_WHITE
+Window.bgcolor = [32,178,170]
 
+start = Start.new
 player = Player.new
-map = Map.new(1)
+stage = 1
+map = Map.new(stage)
 door = Door.new(0,0,200,100,player)
 state = 0
-font = Font.new(15)
+
 time = 600
+font = Font.new(32)
+design = Design.new
 
 block = []
-map.create_move_block
+map.create_move_block(player)
 
 timeout_seconds = 5
 
@@ -28,11 +34,13 @@ Window.loop do
 
 
     when 0
-        start_image = Image.load("start_image_new.png")
-        Window.draw(0,0,start_image)
+        start.draw
         state = 1 if Input.key_push?(K_SPACE)
     
     when 1
+        design.cloud(100,50)
+        design.cloud(300,30)
+        design.cloud(500,50)
         map_x = (player.x / 20).abs
         map_y = ((player.y + 50) / 20).abs
         player_gravity = Gravity.new(map_x,map_y,player)
@@ -42,7 +50,6 @@ Window.loop do
         player.move
         player.jump
         map.draw
-        door.draw
         player_gravity.fall
 
         if time > -1
@@ -62,24 +69,22 @@ Window.loop do
                 map.move_blocks[i].move
             end
         end
-        
-        state = 2 if player.x >= 500
 
+        state = 2 if player.x >= 540
     
     when 2
-        Window.draw_font(230,200,"GAME CLEAR",font, color:C_BLACK)
+        Window.draw_font(200,200,"GAME CLEAR",font, color:C_WHITE)
         if Input.key_push?(K_SPACE)
             state = 1 
             player.x = 25
         end
-
-        
 
     when 3
         Window.draw_font(230,200,"GAME OVER",font,color:C_BLACK)
         if Input.key_push?(K_SPACE)
             state = 1
             player.x = 25
+            
         end
 
     end
