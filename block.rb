@@ -1,11 +1,15 @@
 class Block < Sprite
+    attr_accessor :dy,:v
     def initialize(x,y,num)
+
         @block_width = 80
         @block_height = 80
         self.image = Image.load_tiles("images/puzzle1.png", 2, 2)[num]
         self.collision = [0, 0, @block_width - 1, @block_height - 1]
         self.x = x
         self.y = y
+        @dy = 0
+        @v = 0
     end
 
     def move

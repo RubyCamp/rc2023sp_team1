@@ -5,9 +5,11 @@ require_relative "player"
 require_relative "gravity"
 
 class Map
+    attr_accessor :map, :block
     def initialize(map)
         @dat_path = "maps/stage#{map}.map"
         get_data
+
         @block = Image.new(20, 20, C_BLACK)
     end
 
