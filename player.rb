@@ -14,19 +14,24 @@ class Player < Sprite
         @dx = 0
         @dy = 0
         @v = 0
-        @speed = 4
         @space_count = 1
         @jump_count = 3
         @map_x = (self.x / 20).abs
         @map_y = ((self.y + 50) / 20).abs
-        @map = Map.new
+        @map = Map.new(1)
         @flag = 0
+    end
+
+    def speed(i)
+        @speed = i
     end
 
     def move
         self.x += @dx
         @dx = 0
-        @dx = @speed if Input.key_down?(K_D)
+        if Input.key_down?(K_D)
+            @dx = @speed 
+        end
         @dx = -@speed if Input.key_down?(K_A)
         
         if @dx > 0
@@ -38,6 +43,7 @@ class Player < Sprite
         @map_x = (self.x / 20).abs
         @map_y = ((self.y + 50) / 20).abs
     end
+
 
     def push 
     end
@@ -67,23 +73,7 @@ class Player < Sprite
         @v += 1 # 重力加速度
         if @v > 0 && @flag == 1
             @flag = 0
+
         end
     end
 end
-# ここの条件をかえる
-        # もしも下のブロックが1の時spaceを0にしたい
-        # if (@bottom >= 191)
-        #     @bottom = 190
-        #     @v = 0
-        #     @space_count = 0
-        # end
-        # if (@bottom >= @map_y*20)
-        #     @bottom = @map_y*20
-        #     @v = 0
-        #     @space_count = 0
-        # end
-        # if line2[@map_x] == 1
-        #     #     @bottom = @map_y
-        #     #     @v = 0
-        #     #     @space_count = 0
-        #     # end
