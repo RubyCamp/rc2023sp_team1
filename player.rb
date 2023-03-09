@@ -62,7 +62,6 @@ class Player < Sprite
         # p line[@map_x]
         if @flag == 0
             if line[@map_x] == 1
-                p "地面に触れている"
                 @bottom = @map_y*20
                 @v = 0
                 @space_count = 0
