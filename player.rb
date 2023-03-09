@@ -8,6 +8,10 @@ class Player < Sprite
         self.collision = [0, 0, self.image.height - 1, self.image.width - 1]
         @dx = 0
         @dy = 0
+        p "aaa"
+    end
+
+    def speed
         @speed = 4
     end
 

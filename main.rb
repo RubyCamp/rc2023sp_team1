@@ -10,6 +10,7 @@ Window.height = 400
 Window.bgcolor = C_WHITE
 
 player = Player.new
+player.speed
 map = Map.new(1)
 door = Door.new(0,0,200,100,player)
 state = 0

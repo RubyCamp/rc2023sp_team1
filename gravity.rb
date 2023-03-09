@@ -19,7 +19,8 @@ class Gravity
     end
 
     def ground_collision
-        line = @map.map_data[@map_y]
+        @player.speed
+        line = @map.map_data[@map_y-1]
         if line[@map_x+1] != 0
             @player.stop
         end
