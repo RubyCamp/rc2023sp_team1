@@ -11,6 +11,7 @@ class Map
         get_data
         @move_blocks = []
         @block = Image.new(20, 20, C_BLACK)
+        @player = Player.new
     end
 
     def get_data
@@ -44,7 +45,7 @@ class Map
                 a = @map[i][j]
                 case a
                 when 6
-                    @move_blocks << Block.new(j * 20, i * 20, 0)
+                    @move_blocks << Block.new(j * 20, i * 20, 0,player)
                 when 7
                     @move_blocks << Block.new(j * 20, i * 20, 1)
                 when 8

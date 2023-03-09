@@ -55,8 +55,8 @@ Window.loop do
                 map.move_blocks[i].move
             end
         end
+
         state = 2 if player.x == 500
-    
     when 2
         Window.draw_font(230,200,"GAME CLEAR",font, color:C_BLACK)
         if Input.key_push?(K_SPACE)
