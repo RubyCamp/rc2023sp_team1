@@ -10,7 +10,7 @@ class Map
         @dat_path = "maps/stage#{map}.map"
         get_data
         @move_blocks = []
-        @block = Image.new(20, 20, C_BLACK)
+        @block = Image.new(20, 20, [139,69,19])
     end
 
     def get_data
