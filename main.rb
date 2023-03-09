@@ -4,17 +4,19 @@ require_relative "map"
 require_relative "gravity"
 require_relative "door"
 require_relative "block"
+require_relative "design"
 
 
 Window.width = 600
 Window.height = 400
-Window.bgcolor = C_WHITE
+Window.bgcolor = [32,178,170]
 
 player = Player.new
 map = Map.new(1)
 door = Door.new(0,0,200,100,player)
 state = 0
 font = Font.new(32)
+design = Design.new
 
 block = []
 map.create_move_block
@@ -30,6 +32,9 @@ Window.loop do
         state = 1 if Input.key_push?(K_SPACE)
     
     when 1
+        design.cloud(100,50)
+        design.cloud(300,30)
+        design.cloud(500,50)
         map_x = (player.x / 20).abs
         map_y = ((player.y + 50) / 20).abs
         player_gravity = Gravity.new(map_x,map_y,player)
