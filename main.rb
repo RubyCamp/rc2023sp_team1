@@ -35,6 +35,7 @@ Window.loop do
         player_gravity = Gravity.new(map_x,map_y,player)
         player.draw
         player.move
+        player.jump
         map.draw
         door.draw
         player_gravity.fall
