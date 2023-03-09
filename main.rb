@@ -33,6 +33,7 @@ Window.loop do
         map.draw
         door.draw
         player_gravity.fall
+        player_gravity.ground_collision
         arr = [player,block]
         if Sprite.check(arr) then
             player.push

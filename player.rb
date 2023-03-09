@@ -28,6 +28,11 @@ class Player < Sprite
         end
     end
 
+    def stop
+        p @speed
+        @speed = 0
+    end
+
     def push
         if Input.key_push(K_D)
             self.x += 20
