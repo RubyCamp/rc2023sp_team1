@@ -63,6 +63,5 @@ Window.loop do
             state = 1
             player.x = 25
         end
-
     end
 end
