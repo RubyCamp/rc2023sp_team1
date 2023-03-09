@@ -23,11 +23,13 @@ Window.loop do
     block_gravity = Gravity.new(block_x,block_y,block)
     player.draw
     player.move
+    player.jump
     map.draw
     door.draw
     block.draw
     player_gravity.fall
     block_gravity.fall
+    
     arr = [player,block]
     if Sprite.check(arr) then
         player.push
