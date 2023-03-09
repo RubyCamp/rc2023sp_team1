@@ -15,7 +15,7 @@ map = Map.new
 door = Door.new(0,0,200,100,player)
 state = 0
 font = Font.new(32)
-block = Block.new
+block = Block.new(player)
 timeout_seconds = 5
 
 
@@ -48,7 +48,6 @@ Window.loop do
         end
         
         state = 2 if player.x >= 580
-        puts player.x
 
     when 2
         Window.draw_font(230,200,"GAME CLEAR",font,color:C_BLACK)
